@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -60,8 +61,9 @@ fun Screen(){
                     NavigationBarItem(
                         selected = bottomNavState == index,
                         onClick = { bottomNavState = index },
-                        icon = {
-                            if (bottomNavState == index) bottom.selectedIcon else bottom.unSelectedIcon
+                        icon = { 
+                            Icon(imageVector =if (bottomNavState == index) bottom.selectedIcon else bottom.unSelectedIcon , contentDescription = bottom.title)
+
                         })
 
                 }
@@ -79,7 +81,7 @@ fun Screen(){
             horizontalAlignment = Alignment.CenterHorizontally
         ){
                 Text(
-                    text = menu[bottomNavState].toString(),
+                    text = menu[bottomNavState].title,
                     fontWeight = FontWeight.Bold,
                     fontSize = 44.sp
                 )
