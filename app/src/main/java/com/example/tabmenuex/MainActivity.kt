@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.tabmenuex.representation.Nav
 import com.example.tabmenuex.representation.Screen
 import com.example.tabmenuex.ui.theme.TabMenuExTheme
 
@@ -18,7 +19,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Screen()
+           // Screen()
+            Nav()
         }
     }
 }

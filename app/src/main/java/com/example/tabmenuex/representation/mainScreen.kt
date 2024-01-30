@@ -25,10 +25,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.tabmenuex.Model.Bottom
 
 @Composable
 fun Screen(){
+
+    val nav= rememberNavController()
+    NavHost(navController = nav, startDestination = "A" ){
+        composable(route="A"){
+            ScreenA(nav)
+        }
+        composable(route="B"){
+            ScreenB(nav)
+        }
+        composable(route="C"){
+            ScreenC(nav)
+        }
+
+
+    }
+    
+    
+    
  val menu= listOf(
      Bottom(
          title = "Home",
@@ -80,11 +101,13 @@ fun Screen(){
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-                Text(
-                    text = menu[bottomNavState].title,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 44.sp
-                )
+               if (  bottomNavState==0)
+                   ScreenA(nav = nav)
+             else if (bottomNavState==1)
+                 ScreenB(nav = nav)
+             else
+                  ScreenC(nav = nav)
+                    
         }
     }
 }
